@@ -52,6 +52,25 @@ void show_list(t_listof *l){
     }
     printf("\n");
 }
+int remove_first(t_listof *l){
+    if (is_empty(l)){
+        return -1;
+    }
+
+    int info = l -> first -> info;
+    t_list * garbage = l->first;
+    l->first = l->first->next;
+
+    if (l -> first == NULL){ //list is empty
+        l -> last = NULL;
+    }
+    else{
+        l->first->back = NULL;
+    }
+
+    free (garbage);
+    return (info);
+}
 int main(){
     // type def allows for the definition of a name to a new type recently created
     struct list *list1;
@@ -69,6 +88,8 @@ int main(){
     insert_first(10, &listof);
     insert_first(20, &listof);
     insert_first(30, &listof);
+    show_list(&listof);
+    printf("%d was removed from the start", remove_first(&listof));
     show_list(&listof);
     return 0;
 }
