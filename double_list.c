@@ -46,7 +46,7 @@ void show_list(t_listof *l){
     else{
         t_list *aux = l -> first;
         while (aux != NULL){
-            printf("endereco: %d\n", l, "data: %d", aux -> info);
+            printf("value: %d\n", aux -> info);
             aux = aux -> next;
         }
     }
